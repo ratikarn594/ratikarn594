@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    {% load static %} 
+    {% csrf_token %}
+    <link rel="stylesheet" href="{% static '/css/styleejj.css' %}">
+</head>
+<body style="background-image: url('/static/images/bg6.png');" class="BG">
+    
+    
+    <div class="banner-info" style="padding: 30px; border: 20px solid rgb(255, 255, 255,0.5); background-color: rgb(255, 255, 255,0.7); border-radius: 20px; margin-top: 2%;">
+
+    <form method="post" action="{% url 'loginn' %}" >
+        {% csrf_token %}
+        <div class="input-group">
+            <h2 style="text-align: center; margin-bottom: 10%; margin-top: -10%;">เข้าสู่ระบบ</h2>
+        </div>
+        <div class="input-group">
+            <label for="username" style="margin-right: 4%; margin-top: 24%;">ชื่อผู้ใช้</label>
+            <input type="text" id="username" name="username" style="border-radius: 25px;" required>
+        </div>
+        <div class="input-group">
+            <label for="password" style="margin-right: 4%;">รหัส</label>
+            <input type="password" id="password" name="password" style="border-radius: 25px;" required>
+        </div>
+        <div class="input-group" style="text-align: center;">
+            <button type="submit" class="btn" style="margin-top: 5%; background-color: #747264;">เข้าสู่ระบบ</button>
+        </div>
+        <p style="margin-bottom: -5%;">ยังไม่ได้ลงทะเบียน <a href="{% url 'regis' %}">ลงทะเบียน</a></p>
+        {% if error_message %}
+            <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
+    </form>
+    </div>
+</body>

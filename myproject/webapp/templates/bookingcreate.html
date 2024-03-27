@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    <title>My website</title>
+    {% load static %}
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styleejj.css' %}"/>
+</head>
+{% include 'navbar.html' %}
+{% if user.is_authenticated %}
+<body style="background-image: url('/static/images/bg11.jpg');">
+    <div class="banner-info" style="max-width: 350px;  margin: 0px auto; padding: 20px; border: 20px solid rgb(255, 255, 255,0.5); background-color: rgb(255, 255, 255,0.7); border-radius: 20px; margin-top: 5%; padding-right: 3%; ">
+        <h2 style="display: flex; align-content: center; justify-content: center; ">จองห้องเรียน -{{ roomm }}</h2>
+        
+            
+            <form method="post">
+                <input type="hidden" name="csrfmiddlewaretoken" value="R08C9szAhE4Xa3vqYIa4L5nH20FqRg7JFRwlHQlKFtOsULAHBxyt8eDKFPBSrdvO">
+                {% csrf_token %}
+            {% for error in form.non_field_errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+                <p style="margin-left: 19%;">
+        <label for="id_roomm">ห้อง:</label>
+        <input type="text" name="roomm" value="{{ roomm }}" maxlength="100" required id="id_roomm">
+        
+        
+      </p>
+      {% for addroom in addroom %}
+        {% if addroom.room == roomm %}
+
+        <p style="margin-left: 20%;">รายละเอียด : {{ addroom.details }}</p>
+ 
+        {% endif %}
+      {% endfor %}
+      
+    
+      
+      <p style="margin-left: 20%;">
+        <label for="id_user">ชื่อ :</label>
+        <input type="text" name="user" value="{{ user.first_name }}" maxlength="100" required id="id_user">
+        
+        
+      </p>
+    
+      
+      <p style="margin-left: 20%;">
+        <label for="id_reservation_date">วันที่จะจอง:</label>
+        <input type="date" name="reservation_date" required id="id_reservation_date">
+        
+        
+      </p>
+    
+      
+      <p style="margin-left: 20%;">
+        <label for="id_reservation_time">เวลาที่เริ่มการจอง:</label>
+        <input type="time" name="reservation_time" required id="id_reservation_time">
+        
+        
+      </p>
+    
+      
+      <p style="margin-left: 20%;">
+        <label for="id_reservation_timestop">เวลาที่สิ้นสุดการจอง:</label>
+        <input type="time" name="reservation_timestop" required id="id_reservation_timestop">
+        
+        
+          
+        
+      </p>
+                <button type="submit">ยืนยันการจอง</button>
+            </form>
+        <!-- <form action="" method="post" style="content: 250x527;">
+            {% csrf_token %}
+            
+            <div class="input-group">
+                <h2 style="text-align: center; margin-bottom: -12%; margin-top: -10%; margin-right: -10%;">[การจองห้อง]</h2>
+            </div>
+            <div class="input-group">
+                <label for="room_number" style="margin-right: 4%;">เลขห้อง</label>
+                <input type="text" name="room_number" value="{{ roomm }}" maxlength="50" required id="id_room_number" style="border-radius: 25px;">
+            </div>
+            <div class="input-group">
+                <label for="username2" style="margin-right: 4%;">ชื่อผู้ใช้</label>
+                <input type="text" name="username2" value="{{ user.first_name }}" maxlength="150" autocapitalize="none" autocomplete="username2" autofocus required aria-describedby="id_username2_helptext" id="id_username2" style="border-radius: 25px;">
+            </div>
+            <div class="input-group">
+                <label for="reservation_date" style="margin-right: 4%;">วันที่จอง</label>
+                <input type="date" name="reservation_date" required id="id_reservation_date" style="border-radius: 25px;">
+            </div>
+            <div class="input-group">
+                <label for="reservation_time" style="margin-right: 4%;">เวลาที่เริ่มการจอง</label>
+                <input type="time" name="reservation_time" required id="id_reservation_time" style="border-radius: 25px;">
+            </div>
+            <div class="input-group">
+                <label for="reservation_time" style="margin-right: 4%;">เวลาที่สิ้นสุดการจอง</label>
+                <input type="time" name="reservation_time2" required id="id_reservation_time2" style="border-radius: 25px;">
+            </div>
+            
+            <div class="input-group" style="text-align: center;">
+                <button type="submit" class="btn" style="margin-top: 5%; margin-left: 3%; background-color: #3C3633;">ยืนยันการจอง</button>
+            </div>
+        
+            {% if error_message %}
+            <p style="color: red;">{{ error_message }}</p>
+            {% endif %}
+        </form> -->
+    </div>
+    <!-- {% else %}
+    <p>Please login to view this page.</p>
+    {% endif %} -->
+</body>
+</html>

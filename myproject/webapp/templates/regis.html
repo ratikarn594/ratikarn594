@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    {% load static %}
+    {% csrf_token %}
+    <link rel="stylesheet" type="text/css"href="{% static '/css/styleejj.css' %}"/>
+</head>
+<body style="background-image: url('/static/images/bg9.png');" class="BG">
+    
+    
+    <div class="banner-info" style="padding: 30px; border: 20px solid rgb(255, 255, 255,0.5); background-color: rgb(255, 255, 255,0.7); border-radius: 20px; margin-top: -1%; padding-right: 3%; ">
+    <form action="" method="post" style="content: 250x527;">
+        {% csrf_token %}
+        
+        <!-- <input type="hidden" name="csrfmiddlewaretoken" value="Sa5MUxUFVrO0PMne8l6iXsuhXNJZAiasKyoGjhwvSHkKdrf03Gp5hX9ypPxZml3E">
+        <p>
+        <label for="id_username">Username:</label>
+        <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus required aria-describedby="id_username_helptext" id="id_username">
+        <span class="helptext" id="id_username_helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span>
+  </p>
+
+  
+  <p>
+    <label for="id_password1">Password:</label>
+    <input type="password" name="password1" autocomplete="new-password" required aria-describedby="id_password1_helptext" id="id_password1">
+    
+      <span class="helptext" id="id_password1_helptext"><ul><li>Your password can’t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can’t be a commonly used password.</li><li>Your password can’t be entirely numeric.</li></ul></span>
+    
+    
+  </p>
+
+  
+  <p>
+    <label for="id_password2">Password confirmation:</label>
+    <input type="password" name="password2" autocomplete="new-password" required aria-describedby="id_password2_helptext" id="id_password2">
+    
+      <span class="helptext" id="id_password2_helptext">Enter the same password as before, for verification.</span>
+    
+    
+      
+    
+  </p> -->
+        
+        <!-- <button type="submit">Register</button> -->
+
+
+        <div class="input-group">
+            <h2 style="text-align: center; margin-bottom: -12%; margin-top: -10%; margin-right: -10%;">ลงทะเบียน</h2>
+        </div>
+        <div class="input-group">
+            <label for="username" style="margin-right: 4%; margin-top: 24%;">ชื่อผู้ใช้</label>
+            <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus required aria-describedby="id_username_helptext" id="id_username" style="border-radius: 25px;">
+        </div>
+        
+         <div class="input-group">
+            <label for="password_1" style="margin-right: 4%;">รหัสผ่าน</label>
+            <input type="password" name="password1" autocomplete="new-password" required aria-describedby="id_password1_helptext" id="id_password1" style="border-radius: 25px;">
+        </div>
+        <div class="input-group">
+            <label for="password_2" style="margin-right: 4%;">ยืนยันรหัสผ่าน</label>
+            <input type="password" name="password2" autocomplete="new-password" required aria-describedby="id_password2_helptext" id="id_password2" style="border-radius: 25px;">
+        </div>
+        <div class="input-group">
+            <label for="email" style="margin-right: 4%;">อีเมลล์</label>
+            <input type="email" name="email" maxlength="254" required id="id_email" style="border-radius: 25px;">
+        </div>
+        <div class="input-group">
+            <label for="first_name" style="margin-right: 4%;">ชื่อ</label>
+            <input type="text" name="first_name" maxlength="30" id="id_first_name" style="border-radius: 25px;">
+        </div>
+        <div class="input-group">
+            <label for="last_name" style="margin-right: 4%;">นามสกุล</label>
+            <input type="text" name="last_name" maxlength="30" id="id_last_name" style="border-radius: 25px;">
+        </div>
+
+        <!-- <div class="input-group">
+            <label for="email" style="margin-right: 4%;">อีเมลล์</label>
+            <input type="email" name="password" style="border-radius: 25px;">
+        </div>
+        <div class="input-group">
+            <label for="phone" style="margin-right: 4%;">เบอร์โทร</label>
+            <input type="phone" name="phone" style="border-radius: 25px;">
+        </div> -->
+        <div class="input-group" style="text-align: center;">
+            <button type="submit" class="btn" style="margin-top: 5%; margin-right:-10%; background-color: #3C3633;">ยืนยันการลงทะเบียน</button>
+        </div>
+        <p style="margin-bottom: -5%; text-align: center;">ลงทะเบียนแล้ว <a href="{% url 'loginn' %}">เข้าสู่ระบบ</a></p>
+        {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
+    </form>
+    </div>
+</body>

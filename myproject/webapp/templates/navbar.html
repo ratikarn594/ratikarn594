@@ -1,0 +1,31 @@
+<nav>
+    <div class="navbar">
+        <div class="leftright">       
+            <p style="margin-left: 15px; ">การจองห้องเรียน</p>
+    
+            <div class="dropdown">
+                <div>
+                    <button class="dropbtn" style="padding-left: 115px;">เมนู</button>
+                </div>
+                    
+                <div class="dropdown-content">
+                    <a href="{% url 'booking' %}">การจองห้องเรียน</a>
+                    <a href="{% url 'result' %}">ผลการจอง</a>
+                    {% if user.is_superuser %}
+                    <a href="{% url 'admin:index' %}">ผู้ดูแล</a>
+            {% endif %}
+                    {% if user.is_authenticated %}
+                    <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+                        {% csrf_token %}
+                    </form>
+                    <a href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ออกจากระบบ</a>
+                {% else %}
+                    <a href="{% url 'loginn' %}">Login</a>
+                    <a href="{% url 'register' %}">Register</a>
+                {% endif %}
+                </div>
+
+            </div> 
+        </div>
+    </div> 
+</nav>

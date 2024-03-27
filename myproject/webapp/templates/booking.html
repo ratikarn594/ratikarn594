@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    <title>My website</title>
+    {% load static %}
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styleejj.css' %}"/>
+</head>
+    
+<body style="background-image: url('/static/images/bg11.jpg');">
+<form method="post" action="booking">
+    {% csrf_token %}
+    {% include 'navbar.html' %}
+
+    <div>
+        <div class="gallery" style="display: flex;flex-wrap: wrap; margin-top: 5%;">
+            {% for addroom in addroom %}
+            <div class="polaroid">
+                <a href="{% url 'bookingcreate' roomm=addroom.room %}" style="text-decoration: none;">
+                    <div class="container leftright">
+                        
+                            <p>ห้อง {{addroom.room}}</p>
+                            <p>{{addroom.seats}}</p>
+                    </div>
+                            <img src="{{ addroom.image.url }}" alt="Room1" style="width:250px; height: 160px;">
+                        
+                </a>
+            </div>
+             {% endfor %}
+        </div>
+    </div>
+
+    <!-- สร้างลิงก์หรือฟอร์มสำหรับการออกจากระบบ -->
+    <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+        {% csrf_token %}
+        <!-- เพิ่ม CSRF token เพื่อป้องกันการโจมตี CSRF -->
+    </form>
+</form>
+    <!-- <button onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ออกจากระบบ</button> -->
+</body>
+</html>

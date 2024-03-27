@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    {% load static %}
+    {% csrf_token %}
+    <link rel="stylesheet" type="text/css"href="{% static '/css/styleejj.css' %}"/>
+</head>
+   
+<body style="background-image: url('/static/images/bg16.png');">
+    
+       
+        
+{% include 'navbar.html' %}        
+<div class="bd-example">
+  <table style="width:50%; margin: auto; margin-top: 2%;">
+    <tr>
+      <th style="padding: 4px;">ห้อง</th>
+      <th>ชื่อ</th>
+      <th>วัน/เดือน/ปี</th>
+      <th>เวลาที่เริ่มการจอง</th>
+      <th>เวลาที่สิ้นสุดการจอง</th>
+    </tr>
+    {% for result in all_result %}
+    <tr>
+      <td>{{ result.roomm }}</td>
+      <td>{{ result.user }}</td>
+      <td>{{ result.reservation_date }}</td>
+      <td>{{ result.reservation_time }}</td>
+      <td>{{ result.reservation_timestop }}</td>
+    </tr>
+    {% endfor %}
+
+  </table>
+</div>
+    
+    </body>
+    </html>

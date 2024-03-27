@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+        <title>My website</title>
+
+        {% load static %}
+        {% csrf_token %}
+        <link rel="stylesheet" type="text/css"href="{% static '/css/styleejj.css' %}"/>
+    </head>
+    
+    <body style="background-image: url('/static/images/bg2.jfif');" class="BG">
+        <ban >
+         <!--Banner start -->
+         <section class="banner"0r>
+            <div class="banner-info" style="margin-left: 35%; margin-right: 35%; border: 20px solid rgb(255, 255, 255,0.5); background-color: rgb(255, 255, 255,0.7); border-radius: 20px;">
+            <div style="text-align: center;"><img src="{% static '/images/logo engi.png' %}" width="50%" class="center"></div>
+                <div style="display: flex; justify-content: center; align-items: center; font-size: 200%; text-align: center;">
+                    <p>ยินดีต้อนรับ</p>
+                </div>
+                <div style="text-align: center;">
+                    <a href="{% url 'loginn' %}"><button class="button">เข้าสู่ระบบ</button></a>
+                </div>
+                <div style="margin-top: 2%; text-align: center;">
+                    <a href="{% url 'regis' %}"><button style="background-color: #3C3633; margin-bottom: 5%;" class ="button" >ลงทะเบียน</button></a>
+                </div>
+            </div>
+            </div>
+         </section>
+         <!-- Banner end -->
+        </ban>
+    </body>
